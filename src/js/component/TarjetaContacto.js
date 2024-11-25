@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { Context } from '../store/appContext'
 
-const TarjetaContacto = ({ contact }) => {
+const TarjetaContacto = ({ contact, editar, img }) => {
     const { store, actions } = useContext(Context)
 
     const eliminarContacto = () => {
@@ -11,12 +11,14 @@ const TarjetaContacto = ({ contact }) => {
     };
 
     return (
+
+        <div className="container">
         <li className="list-group-item d-flex justify-content-center">
             <div className="d-flex align-items-center w-75">
                 <div className="col-md-3 d-flex justify-content-center">
                     <img
                         className="rounded-circle"
-                        src="https://picsum.photos/170/170/"
+                        src={img}
                         alt="Contact"
 
                     />
@@ -28,11 +30,11 @@ const TarjetaContacto = ({ contact }) => {
                     <p className="card-text mb-1">{contact.email}</p>
                 </div>
                 <div className="col-md-3 d-flex justify-content-end">
-                    <Link to={"/editContact/" + contact.id} className="btn btn-link p-0 me-3">
+                    <button type="button" className="btn btn-outline-primary mx-2" onClick={()=>editar()} data-bs-toggle="modal" data-bs-target="#editModal">
                         <i className="fa fa-eraser"></i>
-                    </Link>
+                    </button>
                   
-                    <button type="button" data-bs-toggle="modal" data-bs-target={"#delete-contact-" + contact.id} >
+                    <button type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target={"#delete-contact-" + contact.id} >
                         <i className="fa fa-trash fa-lg"></i>
                     </button>
 
@@ -57,6 +59,7 @@ const TarjetaContacto = ({ contact }) => {
                 </div>
             </div>
         </li>
+        </div>
     )
 }
 export default TarjetaContacto

@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             editarContacto: (id, contact) => {
                 const store = getStore()
-                fetch(`https://playground.4geeks.com/contact/agendas/4geeks-user/contacts/${id}`, {
+                fetch(`https://playground.4geeks.com/contact/agendas/capapra29/contacts/${id}`, {
                     method: "PUT",
                     headers: {
                         'Content-Type': 'application/json'
